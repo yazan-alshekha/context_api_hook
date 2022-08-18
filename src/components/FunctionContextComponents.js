@@ -1,10 +1,11 @@
 "use strict";
-import React , {useContext} from "react";
-import { ThemeContext } from "../App";
+import React from "react";
+import { useTheme ,useThemeUpdate} from "../components/ThemeContext";
 
 export default function FunctionContextComponents(){
 
-const darkTheme = useContext(ThemeContext);
+const darkTheme = useTheme();
+const toggleTheme= useThemeUpdate();
 
 const themeStyles = {
     backgroundColor :darkTheme ? '#333' :'#ccc',
@@ -14,8 +15,10 @@ const themeStyles = {
 }
 
 return (
-
-    <div style={ themeStyles }>Function Theme</div>
+    <>
+    <button onClick={toggleTheme}> ToggleTheme</button>
+    <div style={ themeStyles }> {darkTheme.toString()} Function Theme</div>
+    </>
 
     );
 

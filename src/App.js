@@ -1,30 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import React,{ useState } from 'react';
-import FunctionContextComponents from './components/FunctionContextComponents';
 
-export const ThemeContext = React.createContext();
+import FunctionContextComponents from './components/FunctionContextComponents';
+import { ThemeProvider } from './components/ThemeContext.js'
+
 
 function App() {
-
-  const [ darkTheme , setDarkTheme ] = useState( true );
-
-  function toggleTheme (){
-
-    setDarkTheme(prev => !prev);
-  }
-
-
   return (
-  <>
-  <ThemeContext.Provider value = {darkTheme}>
 
-  <button onClick={toggleTheme}> ToggleTheme</button>
-  
-  <FunctionContextComponents/>
-  
-  </ThemeContext.Provider>
-  </>
+    <ThemeProvider>
+
+      <FunctionContextComponents />
+
+    </ThemeProvider>
   );
 }
 
